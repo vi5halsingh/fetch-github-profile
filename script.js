@@ -67,7 +67,7 @@ function fetchData(){
         }</span>
       </div>
 
-      <a href="${data.url}t" target="_blank" class="inline-block mt-6 text-blue-400 hover:underline">
+      <a href="${data.url}" target="_blank" class="inline-block mt-6 text-blue-400 hover:underline">
         View Full GitHub Profile →
       </a>
     </div>
