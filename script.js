@@ -8,7 +8,9 @@
         throw new Error(err) 
     })
 }
-// console.log("hello", getUserData("vi5halsingh"))
+
+
+
 function getRepos(userName){ 
        return fetch(`https://api.github.com/users/${userName}/repos`).then((raw) =>{
                 if(!raw.ok){
@@ -19,9 +21,11 @@ function getRepos(userName){
         throw new Error(err) 
     })
 }
+const input = document.querySelector("input");
 function fetchData(){
     // alert("hello")
     const input = document.querySelector("input").value.trim();
+    // const input = document.querySelector("input").value.trim();
     if (!input) {
         console.error("First you should enter Input 🙂");
         return;
@@ -29,11 +33,11 @@ function fetchData(){
     const userName = input.includes('github.com/')? input.split('github.com/')[1].split('/')[0] : input;
     const card = document.querySelector(".card");
   
-    console.log("input is", input);
+   
     getUserData(userName).then((data) =>{
         
     
-    console.log("data is", data)
+    
     if(!data){
         card.innerHTML = "No data found"
     }
@@ -67,7 +71,7 @@ function fetchData(){
         }</span>
       </div>
 
-      <a href="${data.url}" target="_blank" class="inline-block mt-6 text-blue-400 hover:underline">
+      <a href="${data.html_url}" target="_blank" class="inline-block mt-6 text-blue-400 hover:underline">
         View Full GitHub Profile →
       </a>
     </div>
@@ -127,4 +131,11 @@ const repos = document.querySelector(".repo-card");
     });
     
     input.value = "";
-}    
+}
+
+input.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      fetchData()
+    }
+  });
+
